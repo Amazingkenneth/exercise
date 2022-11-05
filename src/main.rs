@@ -39,7 +39,7 @@ fn show_answer(s: &mut Cursive, msg: &str) {
 
 #[derive(Debug, Serialize, Deserialize)]
 struct Child {
-    att: Vec<i8>
+    att: Vec<i8>,
 }
 #[derive(Debug, Serialize, Deserialize)]
 struct Node {
