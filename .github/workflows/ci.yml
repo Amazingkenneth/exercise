@@ -47,7 +47,7 @@ jobs:
         with:
           name: config.json
           path:
-            ${{ matrix.exec_path }}
+            ./src/map.json
       - uses: SebRollen/toml-action@main
         id: read_toml
         with:
