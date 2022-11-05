@@ -25,7 +25,7 @@ Please read [CONTRIBUTING.md](https://github.com/Amazingkenneth/exercise/blob/ma
 
 ## Dependencies
 <!-- [nlohmann/**json** for C++ initialization](https://github.com/nlohmann/json)-->
-- [xyz347/**xpack** for C++ initialization](https://github.com/xyz347/xpack)
+- [xyz347/**xpack**](https://github.com/xyz347/xpack) for C++ initialization
 - [serde-rs/**json**](https://github.com/serde-rs/json)
 - [gyscos/**cursive**](https://github.com/gyscos/cursive)
 
