@@ -42,6 +42,12 @@ jobs:
         with:
           command: build
           args: --release
+      - uses: actions/upload-artifact@main
+        if: ${{ matrix.os == "ubuntu-latest" }}
+        with:
+          name: config.json
+          path:
+            ${{ matrix.exec_path }}
       - uses: SebRollen/toml-action@main
         id: read_toml
         with:
@@ -51,5 +57,4 @@ jobs:
         with:
           name: exercise-v${{ steps.read_toml.outputs.value }}-${{ matrix.abbr }}
           path:
-            ./src/map.json
             ${{ matrix.exec_path }}
