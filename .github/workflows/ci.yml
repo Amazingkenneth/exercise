@@ -45,7 +45,7 @@ jobs:
       - uses: actions/upload-artifact@main
         if: matrix.os == 'ubuntu-latest'
         with:
-          name: config.json
+          name: config
           path:
             ./src/map.json
       - uses: SebRollen/toml-action@main

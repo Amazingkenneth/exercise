@@ -108,7 +108,7 @@ int main() {
   }
   std::ofstream o("map.json");
   string json = xpack::json::encode(res);
-  o << json << std::endl;
+  o << json;
   o.close();
   return 0;
 }

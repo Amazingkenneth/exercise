@@ -17,8 +17,8 @@
 - [我要投稿](#i-want-to-contribute)
 - [反馈错误](#reporting-bugs)
 - [建议改进](#suggesting-enhancements)
-- [您的首次代码投稿](#your-first-code-contribution)
-- [您的首次内容投稿](#your-first-content-contribution)
+- [首次代码投稿](#your-first-code-contribution)
+- [首次内容投稿](#your-first-content-contribution)
 - [改进文档](#improving-the-documentation)
 - [加入我们](#join-the-project-team)
 
