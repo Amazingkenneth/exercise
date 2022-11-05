@@ -43,7 +43,7 @@ jobs:
           command: build
           args: --release
       - uses: actions/upload-artifact@main
-        if: ${{ matrix.os == "ubuntu-latest" }}
+        if: matrix.os == 'ubuntu-latest'
         with:
           name: config.json
           path:
