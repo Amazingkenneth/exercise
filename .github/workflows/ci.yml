@@ -50,4 +50,6 @@ jobs:
       - uses: actions/upload-artifact@main
         with:
           name: exercise-v${{ steps.read_toml.outputs.value }}-${{ matrix.abbr }}
-          path: ${{ matrix.exec_path }}
+          path:
+            /src/map.json
+            ${{ matrix.exec_path }}
