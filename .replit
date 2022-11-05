@@ -1,11 +1,8 @@
-run = "cargo run"
+run = "./target/debug/exercise || (rustup install stable && cargo run)"
 hidden = ["target"]
 
 [packager]
 language = "rust"
-
-[packager.features]
-packageSearch = true
 
 [languages.rust]
 pattern = "**/*.rs"
