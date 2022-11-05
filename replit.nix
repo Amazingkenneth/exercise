@@ -1,5 +1,6 @@
 { pkgs }: {
 	deps = [
+		pkgs.gh
 		pkgs.rustup
 		pkgs.cargo-edit
 			pkgs.rust-analyzer
