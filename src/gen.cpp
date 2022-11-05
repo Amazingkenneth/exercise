@@ -20,7 +20,8 @@ struct Child {
   XPACK(O(att));
 };
 struct Node {
-  std::string tp, zh, num;
+  std::string tp, zh;
+  int num;
   std::vector<Child> ch;
   XPACK(O(tp, zh, num, ch));
 };
@@ -84,7 +85,7 @@ int main() {
       cerr << "Node " << i << " has no content!" << endl;
       continue;
     }
-    string name = "n" + to_string(i), tp;
+    string tp;
     vector<Child> t;
     if (!g[i].empty()) {
       sort(g[i].begin(), g[i].end());
@@ -104,7 +105,7 @@ int main() {
     } else {
       tp = "Ending";
     }
-    res.idx.emplace_back(Node { tp, r[i], name, t });
+    res.idx.emplace_back(Node { tp, r[i], i, t });
   }
   std::ofstream o("map.json");
   string json = xpack::json::encode(res);

@@ -3,7 +3,7 @@
         {
             "tp": "Random",
             "zh": "出门",
-            "num": "n1",
+            "num": 1,
             "ch": [
                 {
                     "att": [
@@ -28,19 +28,19 @@
         {
             "tp": "Ending",
             "zh": "坐飞机",
-            "num": "n2",
+            "num": 2,
             "ch": []
         },
         {
             "tp": "Ending",
             "zh": "倒垃圾",
-            "num": "n3",
+            "num": 3,
             "ch": []
         },
         {
             "tp": "Question",
             "zh": "去散步",
-            "num": "n4",
+            "num": 4,
             "ch": [
                 {
                     "att": [
@@ -52,7 +52,7 @@
         {
             "tp": "Question",
             "zh": "路口",
-            "num": "n5",
+            "num": 5,
             "ch": [
                 {
                     "att": [
@@ -69,13 +69,13 @@
         {
             "tp": "Ending",
             "zh": "向左转",
-            "num": "n6",
+            "num": 6,
             "ch": []
         },
         {
             "tp": "Ending",
             "zh": "向右转",
-            "num": "n7",
+            "num": 7,
             "ch": []
         }
     ]

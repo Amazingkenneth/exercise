@@ -44,8 +44,8 @@ struct Child {
 #[derive(Debug, Serialize, Deserialize)]
 struct Node {
     tp: String,
-    num: String,
-    text: String,
+    zh: String,
+    num: i8,
     child: Vec<Child>,
 }
 #[derive(Debug, Serialize, Deserialize)]
