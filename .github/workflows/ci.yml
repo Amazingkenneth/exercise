@@ -1,0 +1,53 @@
+on: [push, pull_request]
+
+name: CI
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            abbr: Windows
+            exec_path: ./target/release/exercise.exe
+          - os: ubuntu-latest
+            abbr: Linux(Ubuntu)
+            exec_path: ./target/release/exercise
+          - os: macos-latest
+            abbr: Mac
+            exec_path: ./target/release/exercise
+    runs-on: ${{ matrix.os }}
+    name: Build Executable on ${{ matrix.abbr }}
+    steps:
+      - uses: actions/checkout@main
+      - name: Install C++ Environment
+        id: install_cc
+        uses: rlalik/setup-cpp-compiler@master
+        with:
+          compiler: latest
+      - name: Preload the json files for rust
+        shell: bash
+        env:
+            CC: ${{ steps.install_cc.outputs.cc }}
+            CXX: ${{ steps.install_cc.outputs.cxx }}
+        run: |
+          cd ./src
+          $CXX ./gen.cpp -std=c++17 -O3 -o gen.exe
+          ./gen.exe
+      - uses: actions-rs/toolchain@master
+        with:
+          toolchain: stable
+      - uses: actions-rs/cargo@master
+        with:
+          command: build
+          args: --release
+      - uses: SebRollen/toml-action@main
+        id: read_toml
+        with:
+          file: 'Cargo.toml'
+          field: 'package.version'
+      - uses: actions/upload-artifact@main
+        with:
+          name: exercise-v${{ steps.read_toml.outputs.value }}-${{ matrix.abbr }}
+          path: ${{ matrix.exec_path }}
