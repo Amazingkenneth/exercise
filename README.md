@@ -22,7 +22,7 @@
 
 ## 依赖
 <!-- - [cxx.rs](https://github.com/dtolnay/cxx)-->
-- [xyz347/**xpack** 作为 C++ 初始化工作](https://github.com/xyz347/xpack)
+- [xyz347/**xpack** 作为 C++ 初始化工作依赖项](https://github.com/xyz347/xpack)
 - [serde-rs/**json**](https://github.com/serde-rs/json)
 - [gyscos/**cursive**](https://github.com/gyscos/cursive)
 
