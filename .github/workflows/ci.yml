@@ -51,5 +51,5 @@ jobs:
         with:
           name: exercise-v${{ steps.read_toml.outputs.value }}-${{ matrix.abbr }}
           path:
-            /src/map.json
+            ./src/map.json
             ${{ matrix.exec_path }}
