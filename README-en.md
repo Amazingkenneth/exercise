@@ -1,7 +1,7 @@
 # exercise
 
 [![CI](https://github.com/Amazingkenneth/exercise/actions/workflows/ci.yml/badge.svg)](https://github.com/Amazingkenneth/exercise/actions/workflows/ci.yml)
-[![Code Format Check](https://github.com/Amazingkenneth/exercise/actions/workflows/check.yml/badge.svg)](https://github.com/Amazingkenneth/exercise/actions/workflows/check.yml)
+[![Code Format Check](https://github.com/Amazingkenneth/exercise/actions/workflows/rustfmt.yml/badge.svg)](https://github.com/Amazingkenneth/exercise/actions/workflows/rustfmt.yml)
 [![GitHub license](https://img.shields.io/github/license/Amazingkenneth/exercise)](https://github.com/Amazingkenneth/exercise/blob/main/LICENSE)
 
 **English** [简体中文](https://github.com/Amazingkenneth/exercise/blob/main/README.md)
