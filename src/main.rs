@@ -1,5 +1,6 @@
 use exercise::game::run;
 use std::io::*;
+use serde::{Deserialize, Serialize};
 // use serde_json::Result;
 fn main() {
     preload();
@@ -16,7 +17,7 @@ struct Node {
     tp: String,
     zh: String,
     num: i8,
-    child: Vec<Child>,
+    ch: Vec<Child>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -24,7 +25,7 @@ struct Index {
     idx: Vec<Node>,
 }
 
-fn read_json() {
+fn preload() {
     let mut index_file = std::fs::File::open("config.json").expect("Cannot open json file.");
     let mut contents = String::new();
     index_file.read_to_string(&mut contents).unwrap();

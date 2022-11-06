@@ -1,7 +1,5 @@
-use cursive::views::Dialog;
-use cursive::Cursive;
 use serde::{Deserialize, Serialize};
-use crate::board::MapBoard;
+// use crate::board::MapBoard;
 use cursive::{
     traits::*,
     views::{Button, Dialog, DummyView, LinearLayout},
@@ -19,10 +17,6 @@ pub fn run() {
     );
 
     siv.run();
-
-
-
-    let board = MapBoard::new();
 
     /*let buttons1 = LinearLayout::horizontal()
         .child(Button::new("Restart", restart))
