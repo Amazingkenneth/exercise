@@ -1,5 +1,3 @@
-use serde::{Deserialize, Serialize};
-// use crate::board::MapBoard;
 use cursive::{
     traits::*,
     views::{Button, Dialog, DummyView, LinearLayout},

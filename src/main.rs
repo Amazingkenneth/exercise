@@ -1,6 +1,8 @@
-use exercise::game::run;
-use std::io::*;
+mod game;
+mod board;
 use serde::{Deserialize, Serialize};
+use std::io::*;
+use crate::game::run;
 // use serde_json::Result;
 fn main() {
     preload();
@@ -26,7 +28,7 @@ struct Index {
 }
 
 fn preload() {
-    let mut index_file = std::fs::File::open("config.json").expect("Cannot open json file.");
+    let mut index_file = std::fs::File::open("./src/config.json").expect("Cannot open json file.");
     let mut contents = String::new();
     index_file.read_to_string(&mut contents).unwrap();
     let set: Index = serde_json::from_str(&contents).unwrap();
