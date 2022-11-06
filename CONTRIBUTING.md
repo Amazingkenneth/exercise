@@ -97,52 +97,68 @@ Enhancement suggestions are tracked as [GitHub issues](https://github.com/Amazin
 <!-- You might want to create an issue template for enhancement suggestions that can be used as a guide and that defines the structure of the information to be included. If you do so, reference it here in the description. -->
 
 ## 您的首次代码投稿
-**@开发组同学们**：
-我们非常欢迎大家写脚本（ Python/C++/Javascript/VBS...）来预处理 `data/string.txt` 和 `data/graph.txt`，并生成一个 .json 文件（比如说 map.json）来供后面 Rust 主程序调用。
+<!--**@开发组同学们**：
+我们非常欢迎大家写脚本（ Python/C++/Javascript/VBS...）来预处理 `data/string.txt` 和 `data/graph.txt`，并生成一个 .json 文件（比如说 config.json）来供后面 Rust 主程序调用。-->
 
-### json 文件格式
-不懂的童鞋们可以看看 [json.org](https://www.json.org/json-zh.html)，学习一下相关语法。
+### config.json
+我们使用 `config.json` 用于游戏初始化配置：
+> 不懂的童鞋们可以看看 [json.org](https://www.json.org/json-zh.html)，学习一下 json 的相关语法。
 
-本项目中，我们使用如下格式
-```
+本项目中，我们用 `/data/src/gen.cpp` 生成一个如下格式的 config.json 配置文件。
+```json
 { // json 文件框架
-    "n1": { // “n” 表示 node，后面的数字表示节点编号，对应 `/data/string.txt` 中的节点内容（编号 = 对应行）
-        "nxt": [ // 表示有哪些子节点
-            [
-                2, // 表示连向节点 2
-                1 // 表示有 1 份的概率选中
-            ],
-            [
-                3,
-                4
-            ],
-            [
-                4,
-                3
+    "idx": [ // Index: Vec<Node>，是储存节点信息的数据结构
+        {
+            "tp": "Random", // 表示是一个随机跳边的节点
+            "zh": "出门", // 对应 `/data/string.txt` 中的节点内容
+            "num": 1, // num 表示节点的编号（编号 = 对应行号）
+            "ch": [ // 表示有哪些子节点
+                {
+                    "att": [ // attributes，表示边的属性
+                        2, // 表示连向节点 2
+                        1 // 表示有 1 份的概率选中这条边
+                    ]
+                },
+                {
+                    "att": [
+                        3,
+                        4
+                    ]
+                },
+                {
+                    "att": [
+                        4,
+                        3
+                    ]
+                }
             ]
-        ],
-        "zh": "出门"
-    },
-    "n2": { // 表示是一种结局
-        "zh": "坐飞机"
-    }
+        },
+        {
+            "tp": "Ending", // 表示是一种结局
+            "zh": "坐飞机",
+            "num": 2,
+            "ch": [] // 结局当然没有子节点啦
+        }
+    ]
 }
 ```
 
 ## Your First Content Contribution
+
+### 设计剧情
 We place strings in the game in `/data` file. `/data/string.txt` is only for the sentences and words, and `/data/graph.txt` is only for the logic between the contents.
 
 Here is an example graph:
 
 ![example_graph](https://user-images.githubusercontent.com/81886982/198510011-8550b2d0-ba15-468c-a800-db34a189537a.png)
 
-### string.txt
+#### string.txt
 https://github.com/Amazingkenneth/exercise/blob/e7859c8970a6149890d3f031eb1c695ded3dac06/data/string.txt#L1-L7
 
 We use `|`(ASCII 0x7C) to separate Chinese and English contents.
 
 Each line corresponds to the node number is its line number, which means the example content above is the content of node 1 (Because it is at Line 1).
-### graph.txt
+#### graph.txt
 https://github.com/Amazingkenneth/exercise/blob/786153ac74977433781a351004fa311c541544c8/data/graph.txt#L1-L7
 
 The graph follows this format:
@@ -152,6 +168,29 @@ x,y
 ```
 - when the line is in format of "x,y p", it means node `x` has a edge to `y` with a weight of probability of `p`.
 - when the line is in format of "x,y", it means node `x` is a question with possible answer for user of node `y`.
+### 设计地图
+你可以为我们设计一个游戏地图，按照如下格式：
+#### 首选项
+要求包含以下几个配置
+- size
+  要求是矩形，给出长和宽，以 `axb` 的形式，如 `128x128`，`720x480`
+- 选项别名
+
+#### 方格种类
+- aid
+  急救箱，可增加血量
+- box
+  宝箱，有不定惊喜
+- clearing
+  空地，可以自由通行
+- gateway
+  传送门
+- mud
+  泥潭
+- obstacle
+  障碍物
+- river
+  河流，单行道
 
 ## Improving The Documentation
 You may help us to translate the documents.

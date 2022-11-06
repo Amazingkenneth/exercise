@@ -47,7 +47,7 @@ jobs:
         with:
           name: config
           path:
-            ./src/map.json
+            ./src/config.json
       - uses: SebRollen/toml-action@main
         id: read_toml
         with:

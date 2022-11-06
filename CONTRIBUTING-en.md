@@ -126,28 +126,6 @@ include Setup of env, IDE and typical getting started instructions?
 -->
 
 ### Your First Content Contribution
-We place strings in the game in `/data` file. `/data/string.txt` is only for the sentences and words, and `/data/graph.txt` is only for the logic between the contents.
-
-Here is an example graph:
-
-![example_graph](https://user-images.githubusercontent.com/81886982/198510011-8550b2d0-ba15-468c-a800-db34a189537a.png)
-
-#### string.txt
-https://github.com/Amazingkenneth/exercise/blob/e7859c8970a6149890d3f031eb1c695ded3dac06/data/string.txt#L1-L7
-
-We use '|'`(ASCII 0x7C)` to separate Chinese and English contents.
-Each line corresponds to the node number is its line number, which means the example content above is the content of node 1 (Because it is at Line 1).
-#### graph.txt
-https://github.com/Amazingkenneth/exercise/blob/786153ac74977433781a351004fa311c541544c8/data/graph.txt#L1-L7
-
-The graph follows this format:
-```txt
-x,y p
-x,y
-```
-- when the line is in format of "x,y p", it means node `x` has a edge to `y` with a weight of probability of `p`.
-- when the line is in format of "x,y", it means node `x` is a question with possible answer for user of node `y`.
-
 ### Improving The Documentation
 You may help us to translate the documents.
 ## Join The Project Team

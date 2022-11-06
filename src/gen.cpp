@@ -107,7 +107,7 @@ int main() {
     }
     res.idx.emplace_back(Node { tp, r[i], i, t });
   }
-  std::ofstream o("map.json");
+  std::ofstream o("config.json");
   string json = xpack::json::encode(res);
   o << json;
   o.close();
