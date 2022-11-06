@@ -1,8 +1,8 @@
-mod game;
 mod board;
+mod game;
+use crate::game::run;
 use serde::{Deserialize, Serialize};
 use std::io::*;
-use crate::game::run;
 // use serde_json::Result;
 fn main() {
     preload();
