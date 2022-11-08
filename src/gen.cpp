@@ -2,12 +2,12 @@
 #include <algorithm>
 #include <codecvt>
 #include <cstdio>
+#include <filesystem>
 #include <fstream>
 #include <iostream>
+#include <locale>
 #include <string>
 #include <vector>
-#include <locale>
-#include <filesystem>
 
 const int Maxn = 10005;
 int cnt, err, x, y, p;
@@ -29,7 +29,7 @@ struct Dialog {
   int num, tp;
   std::string txt;
   XPACK(O(num, tp, txt))
-  bool operator< (const Dialog cmp) const {
+  bool operator<(const Dialog cmp) const {
     if (num != cmp.num)
       return num < cmp.num;
     return tp < cmp.tp;
@@ -42,7 +42,7 @@ struct Index {
 } res;
 int main() {
   using namespace std;
-  //using namespace ns;
+  // using namespace ns;
   freopen("./../data/graph.txt", "r", stdin);
   for (cnt = 1; scanf(" %[^\n]", ch) != EOF; ++cnt) {
     if (ch[0] == '#')
@@ -79,7 +79,8 @@ int main() {
       int num;
       char tp;
       sscanf(str.data(), "!%d %c|*", &num, &tp);
-      res.dialog.emplace_back(Dialog {num, tp == 't'? 0 : 1, str.substr(str.find('|')+1)});
+      res.dialog.emplace_back(
+          Dialog{num, tp == 't' ? 0 : 1, str.substr(str.find('|') + 1)});
       continue;
     }
     bool eng = false;
@@ -123,7 +124,7 @@ int main() {
     } else {
       tp = "Ending";
     }
-    res.idx.emplace_back(Node { tp, r[i], i, t });
+    res.idx.emplace_back(Node{tp, r[i], i, t});
   }
   std::ofstream o("config.json");
   string json = xpack::json::encode(res);
