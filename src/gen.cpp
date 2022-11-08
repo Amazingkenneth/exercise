@@ -25,9 +25,20 @@ struct Node {
   std::vector<Child> ch;
   XPACK(O(tp, zh, num, ch));
 };
+struct Dialog {
+  int num, tp;
+  std::string txt;
+  XPACK(O(num, tp, txt))
+  bool operator< (const Dialog cmp) const {
+    if (num != cmp.num)
+      return num < cmp.num;
+    return tp < cmp.tp;
+  }
+};
 struct Index {
+  std::vector<Dialog> dialog;
   std::vector<Node> idx;
-  XPACK(O(idx));
+  XPACK(O(dialog, idx));
 } res;
 int main() {
   using namespace std;
@@ -64,6 +75,13 @@ int main() {
   for (cnt = 1; getline(reader, str); ++cnt) {
     if (str[0] == '#')
       continue;
+    if (str[0] == '!') {
+      int num;
+      char tp;
+      sscanf(str.data(), "!%d %c|*", &num, &tp);
+      res.dialog.emplace_back(Dialog {num, tp == 't'? 0 : 1, str.substr(str.find('|')+1)});
+      continue;
+    }
     bool eng = false;
     printf("Line %d's length %d\n", cnt, str.size());
     for (auto c : str) {
@@ -79,10 +97,10 @@ int main() {
         r[cnt].push_back(c);
     }
   }
-  reader.close();
+  reader.close(), sort(res.dialog.begin(), res.dialog.end());
   for (int i = 1; i <= cnt; ++i) {
     if (r[i].empty()) {
-      cerr << "Node " << i << " has no content!" << endl;
+      cerr << "Node " << i << " isn't a normal node." << endl;
       continue;
     }
     string tp;
