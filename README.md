@@ -18,7 +18,9 @@
 <!-- an example on: https://github.com/Amazingkenneth/exercise/actions/runs/3329635277#artifacts -->
 
 ## 想做点贡献？
-看看[这里](https://github.com/Amazingkenneth/exercise/blob/main/CONTRIBUTING.md)！
+**[点此](https://github.com/users/Amazingkenneth/projects/1)** 查看我们当前的进展；
+
+或者，看看 **[这里的说明](https://github.com/Amazingkenneth/exercise/blob/main/CONTRIBUTING.md)**！
 
 ## 依赖
 <!-- - [cxx.rs](https://github.com/dtolnay/cxx)-->
@@ -26,6 +28,6 @@
 - [serde-rs/**json**](https://github.com/serde-rs/json)
 - [gyscos/**cursive**](https://github.com/gyscos/cursive)
 
-**[Run it online](https://replit.com/@Zykang/exercise#README.md)**
+**[Play it online](https://replit.com/@Zykang/exercise#README.md)**
 
 [![Run on Replit](https://replit.com/badge/github/Amazingkenneth/exercise)](https://replit.com/github/Amazingkenneth/exercise)
