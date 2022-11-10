@@ -1,6 +1,6 @@
 mod game;
-mod plots;
 mod graph;
+mod plots;
 use crate::game::start;
 fn main() {
     start();

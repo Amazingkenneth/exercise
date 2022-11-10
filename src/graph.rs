@@ -25,10 +25,8 @@ pub struct Index {
     pub idx: Vec<Node>,
 }
 
-
 impl Index {
     /*fn getnext(num: i32) -> Dialog {
         let a: Dialog = binary_search_by
     }*/
 }
-
