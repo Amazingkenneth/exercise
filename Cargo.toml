@@ -9,6 +9,8 @@ license = "GPL-3.0"
 repository = "https://github.com/Amazingkenneth/exercise"
 
 [dependencies]
+cursive-aligned-view = "0"
+cursive-tabs = "0"
 serde_json = "1"
 serde = { version = "1", features = ["derive"] }
 # hyper = { version = "0", features = ["full"] }

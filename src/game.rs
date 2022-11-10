@@ -1,101 +1,51 @@
 use cursive::{
     traits::*,
-    views::{Button, Dialog, DummyView, LinearLayout},
+    views::*,
     Cursive,
 };
-
-pub fn run() {
+use cursive_tabs::*;
+use crate::plots::entry;
+use crate::graph::Index;
+use std::io::Read;
+// use serde_json::Error;
+fn game_panel(s: &mut Cursive) {
+    let mut panel = TabPanel::new()
+        .with_tab(TextView::new("按 q 退出").with_name("介绍"))
+        .with_tab(Dialog::text("按照 config.json 中的剧情安排进行游戏")
+            .button("点此进入 LPF 的惊险奇妙故事", |s| {
+                plot_config(s, 0);
+            })
+            .with_name("Plots"))
+        .with_tab(TextView::new("This is the second view!").with_name("Online"));
+    s.add_layer(panel);
+}
+pub fn start() {
     let mut siv = cursive::default();
-
     siv.add_global_callback('q', Cursive::quit);
-    siv.add_layer(
-        Dialog::text("This is a survey!\nPress <Next> when you're ready.")
-            .title("Important survey")
-            .button("Next", show_next),
-    );
-
-    siv.run();
-
-    /*let buttons1 = LinearLayout::horizontal()
-        .child(Button::new("Restart", restart))
-        .child(Button::new("Hint", hint))
-        .child(Button::new("Undo", undo))
-        .child(Button::new("Redo", redo));
-
-    let buttons2 = LinearLayout::horizontal()
-        .child(DummyView)
-        .child(DummyView)
-        .child(DummyView)
-        .child(DummyView)
-        .child(DummyView)
-        .child(DummyView)
-        .child(DummyView)
-        .child(DummyView)
-        .child(DummyView)
-        .child(DummyView)
-        .child(DummyView)
-        .child(DummyView)
-        .child(DummyView)
-        .child(DummyView)
-        .child(DummyView)
-        .child(Button::new("Help", help))
-        .child(Button::new("Quit", Cursive::quit));
-
-    let view = Dialog::around(
-        LinearLayout::vertical()
-            .child(board.with_name("board"))
-            .child(buttons1)
-            .child(buttons2),
-    )
-    .title("SUDOKU");*/
-    //siv.add_layer(view);
-
+    game_panel(&mut siv);
     siv.run();
 }
-
-fn show_next(s: &mut Cursive) {
-    s.pop_layer();
-    s.add_layer(
-        Dialog::text("Did you do the thing?")
-            .title("Question 1")
-            .button("Yes!", |s| show_answer(s, "I knew it! Well done!"))
-            .button("No!", |s| show_answer(s, "I knew you couldn't be trusted!"))
-            .button("Uh?", |s| s.add_layer(Dialog::info("Try again!"))),
-    );
+fn plot_config(s: &mut Cursive, to: i32) {
+    let mut index_file = std::fs::File::open("./config.json").expect("Cannot open json file.");
+    let mut contents = String::new();
+    index_file.read_to_string(&mut contents).unwrap();
+    let ret: Result<Index, serde_json::Error> = serde_json::from_str(&contents);
+    match ret {
+        Ok(ret) => {
+            match to {
+                0 => {
+                    entry(s, ret);
+                },
+                _ => (),
+            }
+        }
+        Err(ret) => {
+            s.add_layer(Dialog::text("请确认 config.json 的格式正确")
+            .title("Error")
+            .button("Return", |s| {
+                s.pop_layer();
+                game_panel(s)
+            }));
+        }
+    };
 }
-
-fn show_answer(s: &mut Cursive, msg: &str) {
-    s.pop_layer();
-    s.add_layer(
-        Dialog::text(msg)
-            .title("Results")
-            .button("Finish", |s| s.quit()),
-    );
-}
-/*fn restart(s: &mut Cursive) {
-    s.call_on_name("board", |board: &mut MapBoard| {
-        board.restart();
-    });
-}
-
-fn hint(s: &mut Cursive) {
-    s.call_on_name("board", |board: &mut MapBoard| {
-        board.hint();
-    });
-}
-
-fn undo(s: &mut Cursive) {
-    s.call_on_name("board", |board: &mut MapBoard| {
-        board.undo();
-    });
-}
-
-fn redo(s: &mut Cursive) {
-    s.call_on_name("board", |board: &mut MapBoard| {
-        board.redo();
-    });
-}
-
-fn help(s: &mut Cursive) {
-    s.add_layer(Dialog::info("Use arrow keys/TAB/Shift+TAB/mouse wheel/mouse click to navigate.\nEnter number 0-9 to fill in.\nClick <Hint> or press <h> to obtain a hint.\nGood luck."))
-}*/

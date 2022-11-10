@@ -36,9 +36,9 @@ struct Dialog {
   }
 };
 struct Index {
-  std::vector<Dialog> dialog;
+  std::vector<Dialog> dlog;
   std::vector<Node> idx;
-  XPACK(O(dialog, idx));
+  XPACK(O(dlog, idx));
 } res;
 int main() {
   using namespace std;
@@ -79,7 +79,7 @@ int main() {
       int num;
       char tp;
       sscanf(str.data(), "!%d %c|*", &num, &tp);
-      res.dialog.emplace_back(
+      res.dlog.emplace_back(
           Dialog{num, tp == 't' ? 0 : 1, str.substr(str.find('|') + 1)});
       continue;
     }
@@ -98,7 +98,7 @@ int main() {
         r[cnt].push_back(c);
     }
   }
-  reader.close(), sort(res.dialog.begin(), res.dialog.end());
+  reader.close(), sort(res.dlog.begin(), res.dlog.end());
   for (int i = 1; i <= cnt; ++i) {
     if (r[i].empty()) {
       cerr << "Node " << i << " isn't a normal node." << endl;
