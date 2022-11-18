@@ -105,7 +105,7 @@ Enhancement suggestions are tracked as [GitHub issues](https://github.com/Amazin
 > 不懂的童鞋们可以看看 [json.org](https://www.json.org/json-zh.html)，学习一下 json 的相关语法。
 
 本项目中，我们用 `/data/src/gen.cpp` 生成一个如下格式的 config.json 配置文件。
-```json
+```json5
 { // json 文件框架
     "idx": [ // Index: Vec<Node>，是储存节点信息的数据结构
         {
