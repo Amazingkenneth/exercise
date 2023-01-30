@@ -6,6 +6,8 @@
 
 **English** [简体中文](https://github.com/Amazingkenneth/exercise/blob/main/README.md)
 
+**Due to project schedule changes, this game will no longer be maintained.**
+
 A simple and easy-to-use square game.
 You may read the [User Guide](https://github.com/Amazingkenneth/exercise/blob/main/USER_GUIDE-en.md).
 
