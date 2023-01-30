@@ -6,7 +6,9 @@
 
 **简体中文** [English](https://github.com/Amazingkenneth/exercise/blob/main/README-en.md)
 
-这是一个仍在开发中的方块游戏，你可以翻阅一下[上手指南](https://github.com/Amazingkenneth/exercise/blob/main/USER_GUIDE.md)。
+**由于项目计划改变，本游戏将不再维护。**
+
+这是一个方块游戏，你可以翻阅一下[上手指南](https://github.com/Amazingkenneth/exercise/blob/main/USER_GUIDE.md)。
 
 ## 怎么玩？
 ### 下载可执行文件
